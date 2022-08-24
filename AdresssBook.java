@@ -7,13 +7,13 @@ import java.util.Scanner;
 public class AdresssBook {
     static ArrayList<Person> list = new ArrayList();
     static Scanner scanner = new Scanner(System.in);
-
     public static void main(String args[]) {
         boolean isAdd = true;
         while (isAdd) {
             System.out.println("Press 1 for add contact :");
             System.out.println("Press 2 for Display contact :");
             System.out.println("Press 3 for Edit contact : ");
+            System.out.println("Press 4 for remove contact : ");
             System.out.println("Press 0 for Exit contact : ");
             int choice = scanner.nextInt();
             switch (choice) {
@@ -25,6 +25,9 @@ public class AdresssBook {
                     break;
                 case 3:
                     editPerson();
+                    break;
+                case 4:
+                    deletePerson();
                     break;
                 default:
                     isAdd = false;
@@ -67,5 +70,20 @@ public class AdresssBook {
             }
         }
     }
+    public static void deletePerson() {
+        System.out.println("Please enter first nane to delete");
+        String personName = scanner.next();
+        System.out.println("___________________________________");
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i).getFirstname().equals(personName)){
+                list.remove(i);
+                System.out.println("list after removing " + list);
+            }else {
+                System.out.println("Enter valid First Name");
+            }
+        }
+    }
+
 }
+
 
